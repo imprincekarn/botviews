@@ -1,0 +1,8 @@
+# Ek line pe ek video. Poora URL ya sirf 11-char video ID, dono chalega.
+# Comments ke liye # use kar.
+
+# https://www.youtube.com/watch?v=dQw4w9WgXcQ
+# https://youtu.be/dQw4w9WgXcQ
+# dQw4w9WgXcQ
+
+https://youtu.be/vTwPYMvOgyE?si=ryjdSsp023K6WzET

@@ -1,0 +1,6 @@
+{
+  "views_per_run": 5,
+  "use_proxies": false,
+  "timeout": 20,
+  "stagger_seconds": [0, 240]
+}
