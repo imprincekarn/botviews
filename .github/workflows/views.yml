@@ -1,0 +1,42 @@
+name: yt-views
+
+on:
+  workflow_dispatch:
+    inputs:
+      views:
+        description: "Views per shard"
+        required: false
+        default: "20"
+  schedule:
+    - cron: "*/15 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: yt-views
+
+jobs:
+  views:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install deps
+        run: pip install -r requirements.txt
+
+      - name: send views
+        env:
+          VIEWS: ${{ github.event.inputs.views || '5' }}
+          SHARD: ${{ matrix.shard }}
+          USE_PROXIES: '0'
+        run: python bot.py
